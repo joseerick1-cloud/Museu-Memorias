@@ -1,0 +1,155 @@
+<!--
+Versão comentada para apresentação.
+Use esta cópia para explicar o fluxo do site durante a apresentação.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museu Memórias - Objetos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-inner">
+            <div class="logo">Museu Memórias</div>
+            <nav class="nav-menu">
+                <a href="exposicao.html">EM CARTAZ</a>
+                <a href="acervo.html" class="active">ACERVO</a>
+                <a href="historia-oral.html">HISTÓRIA ORAL</a>
+                <a href="#">VISITE</a>
+                <a href="#">SOBRE</a>
+                <a href="#">CONTATO</a>
+            </nav>
+            <div class="header-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2L2 7v2h20V7L12 2zm9 9H3v10h3V11h3v10h2V11h2v10h3V11h3v10h2V11zM2 22h20v2H2v-2z"/></svg>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Objetos do acervo</h1>
+            <div class="decorator"><span>♦</span> <hr> <span>♦</span></div>
+        </div>
+    </section>
+
+    <!-- Conteúdo principal da página: aqui ficam as seções que explicam o museu e o acervo. -->
+<main class="main-container">
+        <div class="tabs-container">
+            <a href="acervo.html" class="tab-btn">Todos</a>
+            <a href="fotografias.html" class="tab-btn">Fotografias</a>
+            <a href="objetos.html" class="tab-btn active">Objetos</a>
+            <a href="documentos.html" class="tab-btn">Documentos</a>
+            <a href="historia-oral.html" class="tab-btn">História oral</a>
+        </div>
+
+        <div class="content-layout">
+            <section class="gallery-grid">
+                <div class="grid-item">
+                    <div class="img-wrapper placeholder-3"></div>
+                    <h3>Máquina de Costura</h3>
+                    <span class="meta">Objeto doméstico, c. 1930</span>
+                    <span class="credit">Doação de Maria Antunes</span>
+                </div>
+
+                <div class="grid-item">
+                    <div class="img-wrapper placeholder-7"></div>
+                    <h3>Relógio de Bolso</h3>
+                    <span class="meta">Objeto pessoal, c. 1915</span>
+                    <span class="credit">Coleção Família Vieira</span>
+                </div>
+
+                <div class="grid-item">
+                    <div class="img-wrapper placeholder-4"></div>
+                    <h3>Balança de Mercado</h3>
+                    <span class="meta">Comércio local, c. 1940</span>
+                    <span class="credit">Acervo Caminhos da Feira</span>
+                </div>
+
+                <div class="grid-item">
+                    <div class="img-wrapper placeholder-1"></div>
+                    <h3>Lanterna Ferroviária</h3>
+                    <span class="meta">Transporte, c. 1920</span>
+                    <span class="credit">Fundo Estação Central</span>
+                </div>
+
+                <div class="grid-item">
+                    <div class="img-wrapper placeholder-5"></div>
+                    <h3>Ferramentas de Oficina</h3>
+                    <span class="meta">Trabalho urbano, c. 1950</span>
+                    <span class="credit">Doação de Paulo Mendes</span>
+                </div>
+
+                <div class="grid-item">
+                    <div class="img-wrapper placeholder-6"></div>
+                    <h3>Louças de Família</h3>
+                    <span class="meta">Uso cotidiano, c. 1945</span>
+                    <span class="credit">Coleção Vida Doméstica</span>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="featured-card">
+                    <div class="featured-header">
+                        <span>Coleção em destaque</span>
+                        <div class="card-decorator"></div>
+                    </div>
+                    <div class="featured-body">
+                        <div class="featured-img placeholder-3"></div>
+                        <h3>Objetos do cotidiano</h3>
+                        <p>Peças de trabalho, casa e comércio que ajudam a contar como as pessoas viviam, produziam e se encontravam.</p>
+                        <a href="objetos.html" class="btn-view">Ver coleção <span class="arrow">→</span></a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-logo-section">
+                    <h2>Planeje sua visita</h2>
+                </div>
+            </div>
+            
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Horário</h3>
+                    <p>Terça a sábado, das 9h às 17h</p>
+                    <p>Domingos e feriados, das 10h às 16h</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Endereço</h3>
+                    <p>Rua das Memórias, 123</p>
+                    <p>Centro, Cidade Exemplo - SP</p>
+                    <p>CEP 12345-000</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Entrada</h3>
+                    <p>Inteira: R$ 10,00</p>
+                    <p>Meia: R$ 5,00</p>
+                    <p>Gratuita aos domingos</p>
+                    <a href="#" class="btn-outline">Como chegar</a>
+                </div>
+                
+                <div class="footer-col support-col">
+                    <p class="support-text">Apoie nossa missão de preservar e compartilhar histórias.</p>
+                    <a href="#" class="btn-solid">Seja um apoiador</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
