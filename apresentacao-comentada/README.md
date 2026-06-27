@@ -1,3 +1,0 @@
-# Versão para apresentação
-
-E
