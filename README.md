@@ -1,15 +1,10 @@
-# Museu
+# Museu Memórias
 
-Esta vai ser o meu projeto da Disciplina Padrões Web. Uso acadêmico
+Guia técnico do projeto completo. Este documento explica todos os arquivos do site e descreve o papel principal de cada elemento do CSS.
 
+## 1. Objetivo do projeto
 
-# Guia de apresentação do projeto Museu Memórias
-
-Este documento explica, de forma simples, o que cada parte do código faz para te ajudar na apresentação.
-
-## 1. O que é este projeto?
-
-Este site foi criado para apresentar um museu digital com páginas sobre:
+O site apresenta um museu digital com páginas que exploram:
 - início
 - exposição em cartaz
 - acervo
@@ -18,169 +13,213 @@ Este site foi criado para apresentar um museu digital com páginas sobre:
 - documentos
 - história oral
 
-O objetivo é mostrar uma experiência visual e educativa, como se fosse um site institucional de um museu.
+A intenção é simular um site institucional com design histórico, navegação clara e conteúdo de memória.
 
-## 2. Estrutura das pastas e arquivos
+## 2. Estrutura de arquivos
 
-- inicio.html: página inicial do site
-- exposicao.html: página da exposição principal
-- acervo.html: página geral do acervo
-- fotografias.html: página com fotos do acervo
-- objetos.html: página com objetos do acervo
-- documentos.html: página com documentos do acervo
-- historia-oral.html: página com depoimentos e memórias
-- styles.css: arquivo responsável por toda a aparência do site
-- README.md: descrição básica do projeto
+- `inicio.html` — página inicial do museu
+- `exposicao.html` — página da exposição principal
+- `acervo.html` — página geral do acervo
+- `fotografias.html` — página com apenas fotografias
+- `objetos.html` — página com objetos do acervo
+- `documentos.html` — página com documentos históricos
+- `historia-oral.html` — página de depoimentos e entrevistas
+- `styles.css` — arquivo de estilo que controla todo o layout e visual
+- `README.md` — documentação do projeto para apresentação
 
-## 3. Explicação das páginas HTML
+## 3. Descrição de cada arquivo HTML
 
-### inicio.html
-Esta é a página inicial.
+### `inicio.html`
+- Header com logo e menu de navegação
+- Banner principal com imagem de fundo e texto de abertura
+- Seções de destaque para atrair o visitante ao museu
+- Funciona como a página de entrada do projeto
 
-Ela contém:
-- um cabeçalho com o nome do museu e os links de navegação
-- uma seção principal com imagem de fundo, título e chamada para ação
-- uma área destacando a exposição em cartaz
-- um bloco convidando o visitante a explorar o acervo
+### `exposicao.html`
+- Banner com imagem temática da exposição
+- Texto introdutório sobre a mostra
+- Galeria horizontal de itens relacionados
+- Linha do tempo com eventos históricos
+- Depoimento em destaque e sidebar com formulário
+- Mostra a parte narrativa e informativa do museu
 
-Em apresentação, você pode dizer que esta página funciona como a "porta de entrada" do museu digital.
+### `acervo.html`
+- Lista de abas para filtrar tipos de conteúdo
+- Grade de itens do acervo com imagem e título
+- Sidebar com coleção em destaque
+- Serve como catálogo geral do museu
 
-### exposicao.html
-Esta página fala sobre a exposição principal do museu.
+### `fotografias.html`
+- Layout similar ao acervo, mas focado em imagens
+- Mostra registros visuais e históricos
+- Destaca o valor das fotografias para contar memória
 
-Ela possui:
-- um banner grande com a imagem da exposição
-- texto explicando o tema da mostra
-- uma galeria de itens relacionados
-- uma linha do tempo com eventos importantes
-- uma seção de depoimento de alguém que viveu a história
-- um sidebar com links auxiliares e formulário de visita guiada
+### `objetos.html`
+- Página de objetos do acervo
+- Itens históricos como máquinas, relógios e utensílios
+- Mostra o valor do acervo material, não apenas visual
 
-Essa página mostra que o site não é só visual, mas também tem conteúdo narrativo e educativo.
+### `documentos.html`
+- Página dedicada a documentos históricos
+- Exibe cartas, listas e registros antigos
+- Reforça a importância da documentação na memória coletiva
 
-### acervo.html
-Esta é a página principal do acervo.
+### `historia-oral.html`
+- Página de depoimentos e entrevistas
+- Inclui relatos pessoais e memórias orais
+- Apresenta voz e experiência humana como elemento central
 
-Ela organiza os itens em categorias e mostra:
-- abas ou links para diferentes tipos de itens
-- uma grade de imagens com títulos
-- um painel lateral com uma coleção em destaque
+## 4. Explicação do `styles.css`
 
-Essa página serve como uma espécie de catálogo digital.
+### 4.1. Variáveis e configuração global
 
-### fotografias.html
-Esta página mostra apenas imagens do acervo.
+O início do arquivo define variáveis para cores, fontes e espaçamento.
 
-Ela é parecida com a página de acervo, mas focada em fotografias.
+Exemplo:
+```css
+:root {
+  --bg-header: #0e161d;
+  --bg-parchment: #e6dfcc;
+  --gold: #c3a267;
+  --text-dark: #231f1a;
+  --site-max-width: 1440px;
+}
+```
 
-Você pode explicar que esta seção permite explorar o passado visualmente, por meio de registros fotográficos.
+Também há regras de reset para remover margens e definir `box-sizing: border-box`.
 
-### objetos.html
-Esta página é dedicada aos objetos preservados.
+### 4.2. Cabeçalho (`header`)
 
-Nela aparecem itens como:
-- máquinas
-- relógios
-- ferramentas
-- utensílios domésticos
+Classes principais:
+- `.main-header` — define o fundo escuro e o bordo inferior dourado
+- `.header-inner` — organiza logo, menu e ícone em linha
+- `.logo` — estilo da marca do museu
+- `.nav-menu` — links de navegação com hover e estado ativo
 
-A ideia é mostrar que o museu também preserva objetos do cotidiano, não só imagens.
+Essas regras criam a identidade institucional do site.
 
-### documentos.html
-Esta página apresenta documentos históricos.
+### 4.3. Hero sections e banners
 
-Nela você encontra materiais como:
-- cartas
-- programas
-- mapas
-- bilhetes
-- registros comerciais
+Classes principais:
+- `.hero-section`, `.hero-home`, `.hero-exposicao`
+- `.hero-overlay`
+- `.hero-content`, `.hero-content-expo`
 
-Essa seção reforça a importância da documentação para preservar a memória coletiva.
+Função:
+- define imagens de fundo
+- controla altura e posição
+- aplica sobreposição escura para legibilidade
+- formata títulos e texto principal
 
-### historia-oral.html
-Esta página reúne relatos e depoimentos.
+### 4.4. Layout de páginas
 
-Ela mostra que a memória não é só visual: também há voz, fala e experiência de pessoas que viveram certos momentos.
+Classes principais:
+- `.main-container` — centraliza o conteúdo e aplica espaçamento
+- `.content-layout` — organiza conteúdo principal e sidebar em grade
+- `.tabs-container`, `.tab-btn` — navegação interna para acervo/história
 
-É uma parte importante do projeto porque aproxima o museu de histórias humanas e pessoais.
+Essa área define como as páginas separam conteúdo e suporte lateral.
 
-## 4. Explicação do arquivo styles.css
+### 4.5. Grades, galerias e itens
 
-O arquivo styles.css é o responsável por toda a identidade visual do site.
+Classes principais:
+- `.gallery-grid`, `.gallery-item`, `.grid-item`
+- `.img-wrapper`, `.mini-img`
+- classes de imagem específicas: `.placeholder-1`, `.expo-img-1`, `.oral-img-luzia`, `.oral-img-antonio`
 
-### Parte 1: variáveis e configuração geral
-No começo do CSS, há:
-- reset de margens e preenchimentos
-- cores do tema
-- fontes
-- tamanhos de layout
+Função:
+- cria cartões de imagem com título
+- aplica estilo de fotografia histórica
+- garante responsividade e alinhamento
 
-Essas variáveis deixam o código mais organizado e facilitam a manutenção.
+Exemplo:
+```css
+.img-wrapper {
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  filter: sepia(0.6) contrast(0.95);
+}
+```
 
-### Parte 2: cabeçalho
-A seção de header define:
-- fundo escuro
-- logo do museu
-- menu de navegação
-- ícone visual
+### 4.6. Componentes especiais
 
-Ela cria a parte institucional do site.
+Classes principais:
+- `.featured-card` — card de destaque na sidebar
+- `.timeline-banner`, `.timeline-node` — linha do tempo
+- `.testimonial-section` — bloco de depoimento
+- `.sidebar-box` — caixas laterais de informação e formulário
 
-### Parte 3: banners e hero sections
-As classes como hero-home, hero-section e hero-exposicao controlam:
-- imagem de fundo
-- altura da seção
-- sobreposição escura
-- texto centralizado ou alinhado
+Esses blocos adicionam conteúdo extra e tornam o site mais completo.
 
-Essas áreas deixam o site mais bonito e ajudam a destacar o conteúdo.
+### 4.7. Botões e interações
 
-### Parte 4: layout e grids
-O CSS organiza páginas com:
-- containers principais
-- estrutura em colunas
-- grades de itens
-- sidebar para conteúdo complementar
+Classes principais:
+- `.btn-view`, `.btn-solid`, `.btn-outline`, `.btn-solid-small`
+- `.tab-btn.active`
 
-Isso é o que dá a forma visual das páginas de acervo e exposição.
+Essas regras definem cores, bordas e transições para ações visuais.
 
-### Parte 5: cards, galerias e linha do tempo
-O CSS também define:
-- caixas de destaque
-- blocos de imagens
-- elementos de timeline
-- cartões de depoimento
+### 4.8. Rodapé
 
-Essas partes deixam a experiência mais dinâmica e parecida com um site museológico moderno.
+Classes principais:
+- `.main-footer`
+- `.footer-grid`
+- `.footer-col`
+- `.support-col`
 
-### Parte 6: rodapé
-O rodapé reúne informações como:
-- horário de visita
-- endereço
-- valores de entrada
-- mensagem de apoio ao museu
+Função:
+- organiza informações de horário, endereço e valores
+- finaliza a página com estilo institucional
 
-Ele fecha a página com conteúdo institucional e informativo.
+## 5. Como apresentar no GitHub
 
-## 5. Como explicar na apresentação
+### 5.1. O que mostrar primeiro
 
-Você pode seguir este roteiro simples:
+- abra o `README.md`
+- explique o propósito do site
+- mostre a estrutura de arquivos
 
-1. Comece dizendo que o projeto é um site de museu digital.
-2. Explique que ele foi dividido em páginas para organizar o conteúdo.
-3. Mostre a página inicial como entrada do projeto.
-4. Explique a página de exposição como o espaço central da narrativa.
-5. Mostre o acervo e diga que ele foi dividido por tipo de item.
-6. Comente que o CSS foi usado para dar identidade visual ao projeto.
-7. Finalize dizendo que o site mistura conteúdo cultural, história e design.
+### 5.2. Como explicar o HTML
 
-## 6. Pontos fortes do projeto
+- cada arquivo HTML é uma página do museu
+- use títulos e listas para descrever conteúdo
+- mostre que `historia-oral.html` tem depoimentos e `acervo.html` tem catálogo
 
-- layout bonito e organizado
-- tema histórico e cultural
-- navegação entre páginas
-- uso de CSS para identidade visual
-- estrutura clara para apresentação acadêmica
+### 5.3. Como explicar o CSS
+
+- descreva as variáveis como a base de cores e fontes
+- explique o header como identidade institucional
+- mostre as hero sections como a parte visual principal
+- fale da grade e dos cards como organização de acervo
+
+### 5.4. Exemplo rápido no GitHub
+
+Explique assim:
+
+> "O `styles.css` controla a identidade visual. Por exemplo, `.hero-exposicao` define a imagem de capa da exposição, e `.gallery-grid` organiza os itens do acervo em cartões." 
+
+### 5.5. Finalização
+
+Diga que o projeto combina:
+- conteúdo histórico
+- design visual consistente
+- navegação clara
+- apresentação pensada para web
+
+## 6. Arquivos principais e suas funções
+
+- `inicio.html`: entrada do projeto
+- `exposicao.html`: apresentação do tema da mostra
+- `acervo.html`: catálogo geral do acervo
+- `fotografias.html`: coleção de imagens
+- `objetos.html`: itens físicos do museu
+- `documentos.html`: documentos históricos
+- `historia-oral.html`: relatos orais e entrevistas
+- `styles.css`: aparência, layout e efeitos visuais
+
+## 7. Dica para a apresentação
+
+Mostre o `README.md` primeiro e depois abra uma página HTML para exemplificar.
+Assim você prova que o projeto é organizado e que o código tem intenção clara.
 
 
