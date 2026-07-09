@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museu Memórias - Início</title>
-
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Museu Memórias: site educativo sobre acervo, exposição e participação comunitária.">
+  <title>Museu Memórias | Início</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
 
-    <header class="main-header">
-        <div class="header-inner">
-            <div class="logo"><a href="inicio.html" style="color: inherit; text-decoration: none;">Museu Memórias</a></div>
-            <nav class="nav-menu">
-                <a href="index.html" class="active">INÍCIO</a>
-                <a href="acervo.html">ACERVO</a> <a href="historia-oral.html">HISTÓRIA ORAL</a>
-                <a href="#">VISITE</a>
-                <a href="#">SOBRE</a>
-                <a href="#">CONTATO</a>
-            </nav>
-            <div class="header-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2L2 7v2h20V7L12 2zm9 9H3v10h3V11h3v10h2V11h2v10h3V11h3v10h2V11zM2 22h20v2H2v-2z"/></svg>
-            </div>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navegação principal">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html">Museu Memórias</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="exposicao.html">Exposição</a></li>
+            <li class="nav-item"><a class="nav-link" href="visita.html">Visita</a></li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <section class="hero-home">
-        <img class="hero-bg" src="https://images.unsplash.com/photo-1706331004467-572aed0d1429?auto=format&fit=crop&q=80&w=1600" alt="Entrada do museu" aria-hidden="true" loading="eager">
-        <div class="hero-overlay"></div>
-        <div class="hero-content-home">
-            <p class="pre-title">BEM-VINDO AO</p>
-            <h1>Museu Memórias</h1>
-            <p class="hero-desc">Preservando o passado para iluminar o futuro da nossa cidade.</p>
-            <div class="hero-buttons">
-                <a href="#exposicoes" class="btn-solid">Ver Exposições</a>
-                <a href="acervo.html" class="btn-outline-gold">Explorar Acervo</a>
-            </div>
+  <main id="conteudo">
+    <section class="hero hero-home" aria-labelledby="titulo-home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Acervo comunitário digital</p>
+          <h1 id="titulo-home">Museu Memórias</h1>
+          <p>Um espaço para preservar documentos, imagens, relatos e objetos que ajudam a contar a história da cidade.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="exposicao.html">Ver exposição</a>
+            <a class="btn btn-outline-light" href="visita.html">Agendar visita</a>
+          </div>
         </div>
+        <figure class="hero-media">
+          <picture>
+            <source media="(min-width: 900px)" srcset="https://commons.wikimedia.org/wiki/Special:FilePath/Brazil%2016thc%20map.jpg?width=960">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Brazil%2016thc%20map.jpg?width=640" width="640" height="430" alt="Mapa histórico do Brasil no século XVI" loading="eager">
+          </picture>
+          <figcaption>Mapa histórico do Brasil, século XVI. Fonte: Wikimedia Commons, domínio público.</figcaption>
+        </figure>
+      </div>
     </section>
 
-    <main class="main-container">
-        <section id="exposicoes" class="home-section">
-            <div class="section-header">
-                <h2 class="section-title">Em Cartaz</h2>
-                <div class="decorator"><span>♦</span> <hr> <span>♦</span></div>
-            </div>
+    <section class="section" aria-labelledby="sobre-museu">
+      <div class="container two-columns">
+        <article>
+          <p class="eyebrow">Sobre o projeto</p>
+          <h2 id="sobre-museu">Memória local organizada para pesquisa e visitação</h2>
+          <p>O Museu Memórias reúne materiais fictícios inspirados em arquivos históricos: fotografias de família, mapas, registros de trabalho, objetos domésticos e entrevistas de moradores.</p>
+          <p>A proposta do site é simular uma instituição cultural com navegação simples, conteúdo acessível e páginas preparadas para apresentação escolar.</p>
+        </article>
+        <aside class="info-panel" aria-labelledby="servicos">
+          <h2 id="servicos">O que você encontra</h2>
+          <ul class="check-list">
+            <li>Exposição temática com peças selecionadas.</li>
+            <li>Agenda de visita educativa e mediação.</li>
+            <li>Formulário para escolas e grupos.</li>
+            <li>Créditos e licenças das imagens usadas.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-            <div class="featured-exhibition">
-                <div class="exhibit-img placeholder-exhibit">
-                    <img src="https://images.unsplash.com/photo-1639412852143-fc3bf3fd7234?auto=format&fit=crop&q=80&w=1000" alt="Estação Ferroviária" loading="lazy">
-                </div>
-                <div class="exhibit-text">
-                    <h3>Trilhos do Tempo: A Ferrovia</h3>
-                    <p>Uma jornada visual pelos anos dourados do transporte ferroviário que transformou nossa região no início do século XX.</p>
-                    <a href="#" class="btn-view">Saiba mais</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="acervo-shortcut">
-            <div class="shortcut-content">
-                <h2>O Acervo Digital</h2>
-                <p>Milhares de fotografias, documentos e objetos catalogados para pesquisa e apreciação pública.</p>
-                <a href="acervo.html" class="btn-burgundy">Acesse a Coleção Completa</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <div class="footer-inner">
-            <div class="footer-top">
-                <div class="footer-logo-section">
-                    <h2>Planeje sua visita</h2>
-                </div>
-            </div>
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Horário</h3>
-                    <p>Terça a sábado, das 9h às 17h<br>Domingos, das 10h às 16h</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Endereço</h3>
-                    <p>Rua das Memórias, 123 - Centro<br>Cidade Exemplo - SP</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Entrada</h3>
-                    <p>Inteira: R$ 10,00 | Meia: R$ 5,00<br>Gratuita aos domingos</p>
-                </div>
-                <div class="footer-col support-col">
-                    <p class="support-text">Apoie nossa missão de preservar histórias.</p>
-                    <a href="#" class="btn-solid-small">Seja um apoiador</a>
-                </div>
-            </div>
+    <section class="section section-muted" aria-labelledby="destaques">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Destaques</p>
+          <h2 id="destaques">Três entradas para conhecer o acervo</h2>
         </div>
-    </footer>
+        <div class="card-grid">
+          <article class="memory-card">
+            <h3>Documentos</h3>
+            <p>Cartas, mapas, recibos e registros oficiais ajudam a reconstituir decisões, trajetos e formas de trabalho.</p>
+            <a href="exposicao.html#documentos">Explorar documentos</a>
+          </article>
+          <article class="memory-card">
+            <h3>Objetos</h3>
+            <p>Peças de uso cotidiano revelam hábitos, técnicas e relações sociais que nem sempre aparecem nos livros.</p>
+            <a href="exposicao.html#objetos">Ver objetos</a>
+          </article>
+          <article class="memory-card">
+            <h3>História oral</h3>
+            <p>Depoimentos preservam lembranças, sotaques, afetos e detalhes que aproximam a pesquisa da comunidade.</p>
+            <a href="visita.html#formulario">Enviar relato</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <p><strong>Museu Memórias</strong><br>Projeto estático educativo.</p>
+      <p>Rua das Memórias, 123<br>Centro, Cidade Exemplo - SP</p>
+      <p><a href="https://commons.wikimedia.org/" target="_blank" rel="noreferrer">Wikimedia Commons</a><br><a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">Bootstrap</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

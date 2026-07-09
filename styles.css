@@ -1,1072 +1,484 @@
-/* ==========================================================================
-   1. VARIÁVEIS DE PALETA HISTÓRICA & SETUP GERAL
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --color-ink: #1f2933;
+  --color-muted: #596675;
+  --color-paper: #f7f3ea;
+  --color-surface: #ffffff;
+  --color-line: #d8cbb8;
+  --color-primary: #8f2f3f;
+  --color-primary-dark: #642431;
+  --color-accent: #c08a3e;
+  --color-green: #2f6b57;
+  --font-base: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --radius-sm: 0.35rem;
+  --radius-md: 0.5rem;
+  --shadow-soft: 0 1rem 2rem rgb(31 41 51 / 0.12);
+  --container: 70rem;
 }
 
-:root {
-    --bg-header: #0e161d;        /* Azul-escuro profundo (idêntico ao mockup) */
-    --bg-timeline: #0d1e29;      /* Azul-petróleo fechado para blocos escuros */
-    --bg-parchment: #e6dfcc;     /* Fundo principal tom papel/pergaminho antigo */
-    --bg-card: #ded5bf;          /* Tom de bege mais denso para corpos de caixas */
-    --burgundy: #451119;         /* Vinho aristocrático / Bordô profundo */
-    --gold: #c3a267;             /* Dourado envelhecido fosco */
-    --gold-dim: rgba(195, 162, 103, 0.3);
-    --text-dark: #231f1a;        /* Grafite quente para leitura confortável */
-    --text-muted: #665d4e;       /* Créditos e metadados */
-    --text-light: #f5f2eb;       /* Texto claro de alto contraste */
-    --site-max-width: 1440px;
-    --site-padding: clamp(16px, 4vw, 80px);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-    overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-parchment);
-    /* Microtextura sutil que simula a granulação de papel antigo */
-    background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
-    background-size: 20px 20px;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-dark);
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
-    overflow-x: hidden;
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-base);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-img,
-svg {
-    max-width: 100%;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgb(31 41 51 / 0.045) 1px, transparent 1px);
+  background-size: 1rem 1rem;
 }
 
-
-
-/* ==========================================================================
-   2. CABEÇALHO (HEADER INSTITUCIONAL)
-   ========================================================================== */
-.main-header {
-    background-color: var(--bg-header);
-    width: 100%;
-    padding: 24px 0;
-    border-bottom: 2px solid var(--gold);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    box-sizing: border-box;
-}
-
-.header-inner {
-    max-width: var(--site-max-width);
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 var(--site-padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 18px;
-    box-sizing: border-box;
-}
-
-.logo {
-    color: var(--text-light);
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 1.2;
-}
-
-.logo a {
-    color: var(--text-light);
-    text-decoration: none;
-}
-
-.nav-menu {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
-    min-width: 0;
-}
-
-.nav-menu a {
-    color: #929ba5;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s, border-bottom 0.3s;
-    padding-bottom: 4px;
-    border-bottom: 1px solid transparent;
-    white-space: nowrap;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-}
-
-.header-icon {
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
-/* ==========================================================================
-   3. HERO BANNERS (HOME, ACERVO E EXPOSIÇÃO)
-   ========================================================================== */
-.hero-section, .hero-home, .hero-exposicao {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    padding: 0 var(--site-padding);
-    overflow: hidden;
-}
-
-/* Alturas e imagens específicas de cada página */
-.hero-home {
-    height: 75vh;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero-section {
-    height: 260px;
-}
-
-.hero-exposicao {
-    height: 360px;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90deg, rgba(14, 22, 29, 0.98) 30%, rgba(14, 22, 29, 0.75) 100%);
-    z-index: 1;
-}
-
-/* Imagem de fundo como elemento HTML, coberta e posicionada atrás do conteúdo */
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-}
-
-.hero-home .hero-overlay {
-    background: rgba(14, 22, 29, 0.8);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 750px;
-}
-
-.hero-content-expo {
-    position: relative;
-    z-index: 2;
-    max-width: 760px;
-    color: var(--text-light);
-}
-
-.hero-content-expo h1 {
-    font-family: 'Cinzel', serif;
-    color: var(--text-light);
-    font-size: 3.2rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    line-height: 1.1;
-}
-
-.hero-content h1 {
-    font-family: 'Cinzel', serif;
-    color: var(--text-light);
-    font-size: 3.4rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    line-height: 1.1;
-}
-
-/* Decorador Clássico (Losangos e Linhas Finas) */
-.decorator {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--gold);
-    margin-top: 8px;
-    width: 240px;
-}
-
-.decorator hr {
-    flex-grow: 1;
-    border: none;
-    border-top: 1px solid var(--gold-dim);
-}
-
-.hero-expo-desc {
-    margin-top: 20px;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #cbd2d9;
-}
-
-/* Customização do Texto da Home */
-.hero-content-home {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    color: white;
-}
-
-.hero-content-home .pre-title {
-    color: var(--gold);
-    letter-spacing: 5px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.hero-content-home h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 4.5rem;
-    margin-bottom: 20px;
-}
-
-.hero-desc {
-    font-size: 1.2rem;
-    color: #e4e7eb;
-    margin-bottom: 35px;
-    font-weight: 300;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-}
-
-/* ==========================================================================
-   4. ESTRUTURA LAYOUT E FILTROS (TABS)
-   ========================================================================== */
-.main-container {
-    max-width: var(--site-max-width);
-    margin: 0 auto;
-    padding: 50px var(--site-padding);
-}
-
-.tabs-container {
-    display: flex;
-    gap: 6px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 45px;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    -webkit-overflow-scrolling: touch;
-}
-
-.tab-btn {
-    background: none;
-    border: none;
-    padding: 12px 26px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.2s;
-    flex: 0 0 auto;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.tab-btn.active {
-    background-color: var(--burgundy);
-    color: var(--text-light);
-    font-weight: 600;
-}
-
-/* Divisão Perfeita: Conteúdo Principal vs Lateral */
-.content-layout {
-    display: grid;
-    grid-template-columns: 3.2fr 1.3fr;
-    gap: 60px;
-}
-
-.content-layout > *,
-.featured-exhibition > *,
-.footer-grid > *,
-.horizontal-gallery > *,
-.gallery-grid > * {
-    min-width: 0;
-}
-
-/* ==========================================================================
-   5. CATALOGAÇÃO E ASYMMETRIC GRID (ACERVO)
-   ========================================================================== */
-.gallery-container {
-    display: flex;
-    flex-direction: column;
-    gap: 45px;
-}
-
-.gallery-row {
-    display: grid;
-    gap: 30px;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
-    gap: 30px;
-}
-
-/* Linha Superior com 3 Colunas Maiores */
-.row-3-cols { grid-template-columns: repeat(3, 1fr); }
-
-/* Linha Inferior com 4 Colunas Menores */
-.row-4-cols { grid-template-columns: repeat(4, 1fr); }
-
-.grid-item {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Tratamento de Imagem de Arquivo Histórico */
-.img-wrapper {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background-color: #cbc0a5;
-    margin-bottom: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.05);
-    overflow: hidden;
-}
-
-
-
-.grid-item:hover .img-wrapper img {
-    filter: sepia(0.2) contrast(1) brightness(1);
-    transform: translateY(-2px);
-}
-
-.img-wrapper img,
-.img-wrapper img.cover-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: sepia(0.6) contrast(0.95) brightness(0.9);
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.grid-item h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-}
-
-.grid-item .meta {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 2px;
-}
-
-.grid-item .credit {
-    font-size: 0.7rem;
-    font-style: italic;
-    color: var(--text-muted);
-}
-
-/* ==========================================================================
-   6. COMPONENTES EXCLUSIVOS DA EXPOSIÇÃO
-   ========================================================================== */
-.expo-intro-text h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.9rem;
-    color: var(--burgundy);
-    margin-bottom: 20px;
-}
-
-.expo-intro-text p {
-    font-size: 0.98rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    color: var(--text-dark);
-    text-align: justify;
-}
-
-/* Galeria de Evidências da Mostra */
-.horizontal-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin: 40px 0;
-}
-
-.mini-img {
-    width: 100%;
-    height: 120px;
-    background-color: #cbc0a5;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 12px;
-    box-shadow: inset 0 0 15px rgba(0,0,0,0.15);
-    overflow: hidden;
-}
-
-
-
-.mini-img img.cover-img-mini {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: sepia(0.5) contrast(0.95);
-}
-
-.gallery-item h4 {
-    font-family: 'Cinzel', serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 4px;
-}
-
-/* Linha do Tempo (Fita de Fundo Escuro) */
-.timeline-banner {
-    background-color: var(--bg-timeline);
-    border: 1px solid var(--gold);
-    padding: 24px;
-    margin: 45px 0;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-.timeline-title {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-    font-size: 1.05rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(195, 162, 103, 0.2);
-    padding-bottom: 8px;
-}
-
-.timeline-scroll {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    overflow-x: auto;
-}
-
-.timeline-node {
-    min-width: 110px;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-.timeline-node .year {
-    font-family: 'Cinzel', serif;
-    color: var(--gold);
-    font-size: 1.1rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 6px;
+a {
+  color: var(--color-primary);
+  text-underline-offset: 0.2em;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.timeline-node .desc {
-    font-size: 0.72rem;
-    line-height: 1.4;
-    color: #9cb0c0;
+a:hover {
+  color: var(--color-primary-dark);
 }
 
-/* Bloco de Depoimento (História Oral) */
-.testimonial-section {
-    display: flex;
-    gap: 24px;
-    background: rgba(0, 0, 0, 0.02);
-    padding: 30px;
-    border-left: 4px solid var(--burgundy);
-    margin-top: 45px;
-    align-items: center;
-    position: relative;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 0.2rem solid var(--color-accent);
+  outline-offset: 0.2rem;
 }
 
-.testimonial-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
+h1,
+h2,
+h3,
+.brand {
+  font-family: var(--font-display);
+  line-height: 1.12;
 }
 
-.large-quote {
-    font-family: 'Cinzel', serif;
-    font-size: 4rem;
-    color: var(--burgundy);
-    line-height: 0.5;
-    align-self: flex-start;
-    opacity: 0.25;
+h1 {
+  font-size: clamp(2.4rem, 12vw, 4.25rem);
 }
 
-.author-photo {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background-color: #bbb;
-    overflow: hidden;
-    border: 1px solid var(--gold);
-    flex-shrink: 0;
+h2 {
+  font-size: clamp(1.65rem, 7vw, 2.5rem);
 }
 
-.author-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(1) sepia(0.3);
+h3 {
+  font-size: 1.25rem;
 }
 
-.testimonial-text p {
-    font-style: italic;
-    font-size: 0.98rem;
-    line-height: 1.65;
-    margin-bottom: 10px;
-    color: var(--text-dark);
+.container {
+  max-width: var(--container);
 }
 
-.author-info {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    text-transform: uppercase;
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 10;
+  transform: translateY(-150%);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  padding: var(--space-2) var(--space-3);
+  box-shadow: var(--shadow-soft);
 }
 
-/* ==========================================================================
-   7. CAIXAS E FORMULÁRIOS DA SIDEBAR
-   ========================================================================== */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.skip-link:focus {
+  transform: translateY(0);
 }
 
-.sidebar-box {
-    border: 1px solid #3a3226;
-    background-color: var(--bg-card);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  border-bottom: 1px solid rgb(216 203 184 / 0.55);
+  background: rgb(247 243 234 / 0.96);
+  backdrop-filter: blur(0.75rem);
 }
 
-.featured-card {
-    border: 1px solid #3a3226;
-    background-color: var(--bg-card);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+.navbar {
+  --bs-navbar-color: var(--color-ink);
+  --bs-navbar-hover-color: var(--color-primary);
+  --bs-navbar-active-color: var(--color-primary);
+  padding-block: var(--space-2);
 }
 
-/* Cabeçalho Escuro da Sidebar */
-.featured-header,
-.featured-header-dark {
-    background-color: var(--bg-timeline);
-    color: var(--gold);
-    font-family: 'Cinzel', serif;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 16px 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--gold);
+.brand {
+  color: var(--color-ink);
+  font-size: 1.35rem;
+  font-weight: 700;
 }
 
-.featured-body {
-    padding: 24px;
+.nav-link {
+  border-radius: var(--radius-sm);
+  font-weight: 650;
 }
 
-.featured-img {
-    width: 100%;
-    height: 190px;
-    background-color: #cbc0a5;
-    margin-bottom: 18px;
-    border: 1px solid rgba(0,0,0,0.1);
-    overflow: hidden;
+.nav-link:hover,
+.nav-link.active {
+  background: rgb(143 47 63 / 0.09);
 }
-
-.featured-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: sepia(0.5) contrast(0.95);
-}
-
-.card-decorator {
-    width: 48px;
-    height: 1px;
-    background-color: var(--gold);
-    opacity: 0.65;
-}
-
-/* Cabeçalho Vinho da Sidebar */
-.box-header,
-.box-header-burgundy {
-    background-color: var(--burgundy);
-    color: white;
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    padding: 16px 20px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.box-body {
-    padding: 24px;
-}
-
-.placeholder-featured {
-    width: 100%;
-    height: 190px;
-    margin-bottom: 18px;
-    border: 1px solid rgba(0,0,0,0.1);
-    overflow: hidden;
-}
-
-/* Links Internos das Caixas Laterais */
-.menu-box ul { list-style: none; }
-.menu-box ul li { border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
-.menu-box ul li:last-child { border-bottom: none; }
-.menu-box ul li a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 0;
-    color: var(--text-dark);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-.menu-box ul li a:hover { color: var(--burgundy); }
-
-/* Formatação do Formulário de Alta Precisão */
-.museum-form .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 16px;
-}
-
-.museum-form .form-row {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 14px;
-}
-
-.museum-form label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    margin-bottom: 5px;
-    letter-spacing: 0.5px;
-}
-
-.museum-form input,
-.museum-form textarea {
-    background-color: rgba(255, 255, 255, 0.35);
-    border: 1px solid #5c523f;
-    padding: 11px 14px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.88rem;
-    color: var(--text-dark);
-    transition: all 0.2s;
-    width: 100%;
-    min-width: 0;
-}
-
-.museum-form input:focus,
-.museum-form textarea:focus {
-    outline: none;
-    background-color: #ffffff;
-    border-color: var(--burgundy);
-    box-shadow: 0 0 4px rgba(69, 17, 25, 0.15);
-}
-
-/* ==========================================================================
-   8. COMPONENTES EXCLUSIVOS DA HOME PAGE
-   ========================================================================== */
-.home-section { margin-bottom: 50px; }
-.section-header { margin-bottom: 35px; }
-.section-title { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 400; }
-
-.featured-exhibition {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    background: var(--bg-card);
-    padding: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.placeholder-exhibit {
-    height: 380px;
-    overflow: hidden;
-}
-
-.placeholder-exhibit img,
-.placeholder-featured img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: sepia(0.5) contrast(0.95);
-}
-
-.exhibit-text h3 { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 15px; }
-.exhibit-text p { font-size: 0.95rem; line-height: 1.65; margin-bottom: 25px; color: #443c30; }
-
-.acervo-shortcut {
-    margin-top: 50px;
-    padding: 80px 40px;
-    background-color: var(--bg-header);
-    color: white;
-    text-align: center;
-    border: 1px solid var(--gold);
-}
-
-.shortcut-content { max-width: 600px; margin: 0 auto; }
-.shortcut-content h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2.5rem; margin-bottom: 15px; }
-.shortcut-content p { color: #b0b8c2; font-size: 1rem; line-height: 1.6; }
-
-/* ==========================================================================
-   9. BOTÕES DE COMPORTAMENTO PREMIUM
-   ========================================================================== */
-.btn-view, .btn-submit, .btn-solid, .btn-burgundy {
-    background-color: var(--burgundy);
-    color: var(--text-light);
-    text-decoration: none;
-    padding: 14px 28px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: background-color 0.2s;
-    max-width: 100%;
-    line-height: 1.3;
-    text-align: center;
-    white-space: normal;
-}
-
-.btn-view:hover, .btn-submit:hover, .btn-solid:hover, .btn-burgundy:hover {
-    background-color: #5c1a24;
-}
-
-.btn-submit { width: 100%; margin-top: 10px; }
-.btn-burgundy { display: inline-block; margin-top: 25px; }
 
-.btn-outline-gold {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 14px 28px;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-    max-width: 100%;
-    line-height: 1.3;
-    text-align: center;
-    white-space: normal;
+.hero,
+.page-hero {
+  background:
+    linear-gradient(135deg, rgb(31 41 51 / 0.9), rgb(47 107 87 / 0.82)),
+    var(--color-ink);
+  color: #fff;
 }
-.btn-outline-gold:hover { background: var(--gold); color: var(--bg-header); }
 
-/* ==========================================================================
-   10. RODAPÉ (FOOTER INSTITUCIONAL)
-   ========================================================================== */
-.main-footer {
-    background-color: var(--burgundy);
-    color: rgba(255, 255, 255, 0.75);
-    width: 100%;
-    padding: 60px 0;
-    border-top: 4px solid var(--gold);
-    box-sizing: border-box;
+.hero {
+  padding-block: var(--space-6);
 }
 
-.footer-inner {
-    max-width: var(--site-max-width);
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 var(--site-padding);
-    box-sizing: border-box;
+.page-hero {
+  padding-block: var(--space-6);
 }
 
-.footer-top h2 {
-    font-family: 'Instrument Serif', serif;
-    font-size: 3rem;
-    font-style: italic;
-    color: var(--gold);
-    font-weight: 400;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 16px;
-    margin-bottom: 35px;
+.page-hero.compact {
+  padding-block: var(--space-5);
 }
 
+.hero-grid,
+.two-columns,
+.content-with-aside,
+.form-layout,
 .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+  display: grid;
+  gap: var(--space-4);
 }
 
-.footer-col h3 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 18px;
-    letter-spacing: 1.5px;
+.hero-copy {
+  align-self: center;
 }
 
-.footer-col p {
-    font-size: 0.82rem;
-    line-height: 1.6;
-    margin-bottom: 8px;
+.hero-copy p {
+  max-width: 42rem;
+  font-size: 1.1rem;
 }
 
-.btn-outline {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    text-decoration: none;
-    padding: 8px 18px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-top: 12px;
-    transition: all 0.2s;
-}
-.btn-outline:hover { background-color: var(--gold); color: var(--burgundy); }
-
-.support-col { display: flex; flex-direction: column; }
-.support-text { font-style: italic; font-size: 0.9rem; color: #e6dfcc; margin-bottom: 16px; }
-
-.btn-solid-small {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    text-decoration: none;
-    padding: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-    transition: background 0.2s;
-}
-.btn-solid-small:hover { background: rgba(255, 255, 255, 0.1); }
-
-/* ==========================================================================
-   11. RESPONSIVIDADE ADAPTATIVA DO PROJETO
-   ========================================================================== */
-@media (max-width: 1200px) {
-    .content-layout, .featured-exhibition { grid-template-columns: 1fr; }
-    .content-layout { gap: 40px; }
-    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
-@media (max-width: 850px) {
-    .row-3-cols, .row-4-cols, .gallery-grid, .horizontal-gallery { grid-template-columns: repeat(2, 1fr); }
-    .hero-content h1 { font-size: 2.6rem; }
-    .hero-content-home h1 { font-size: 3.2rem; }
-    .hero-content-expo h1 { font-size: 2.7rem; }
-    .footer-grid { grid-template-columns: 1fr; }
+.hero-media {
+  margin: 0;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
-@media (max-width: 720px) {
-    .main-header {
-        padding: 18px 0;
-    }
-    .header-inner,
-    .footer-inner,
-    .main-container {
-        padding-left: var(--site-padding);
-        padding-right: var(--site-padding);
-    }
-    .header-inner {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        text-align: center;
-    }
-    .logo { font-size: 1.35rem; }
-    .nav-menu {
-        justify-content: center;
-        gap: 10px 14px;
-    }
-    .header-icon { display: none; }
-    .hero-section,
-    .hero-home,
-    .hero-exposicao {
-        padding-top: 54px;
-        padding-bottom: 54px;
-    }
-    .hero-section { height: auto; min-height: 220px; }
-    .hero-home { height: auto; min-height: 500px; }
-    .hero-exposicao { height: auto; min-height: 330px; }
-    .hero-content,
-    .hero-content-home,
-    .hero-content-expo {
-        width: 100%;
-    }
-    .hero-content .decorator,
-    .hero-content-home .decorator {
-        margin-left: auto;
-        margin-right: auto;
-    }
+.hero-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
-@media (max-width: 600px) {
-    .row-3-cols, .row-4-cols, .gallery-grid, .horizontal-gallery, .footer-grid { grid-template-columns: 1fr; }
-    .main-container {
-        padding-top: 34px;
-        padding-bottom: 34px;
-    }
-    .content-layout {
-        gap: 32px;
-    }
-    .header-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .nav-menu {
-        width: 100%;
-        justify-content: center;
-        gap: 9px 12px;
-    }
-    .nav-menu a {
-        font-size: 0.68rem;
-        letter-spacing: 1px;
-    }
-    .hero-content h1,
-    .hero-content-expo h1 {
-        font-size: 2.25rem;
-    }
-    .hero-content-home h1 {
-        font-size: 2.55rem;
-        line-height: 1.05;
-    }
-    .hero-content-home .pre-title {
-        font-size: 0.74rem;
-        letter-spacing: 3px;
-    }
-    .hero-desc,
-    .hero-expo-desc {
-        font-size: 0.98rem;
-    }
-    .hero-buttons {
-        align-items: stretch;
-        flex-direction: column;
-    }
-    .hero-buttons a,
-    .btn-burgundy {
-        width: 100%;
-    }
-    .tabs-container {
-        flex-wrap: wrap;
-        margin-bottom: 30px;
-        overflow-x: visible;
-    }
-    .tab-btn {
-        flex: 1 1 calc(50% - 6px);
-        padding: 11px 18px;
-    }
-    .expo-intro-text p {
-        text-align: left;
-    }
-    .featured-exhibition {
-        padding: 22px;
-        gap: 24px;
-    }
-    .placeholder-exhibit {
-        height: auto;
-        aspect-ratio: 4 / 3;
-    }
-    .exhibit-text h3 {
-        font-size: 1.45rem;
-    }
-    .section-title,
-    .shortcut-content h2 {
-        font-size: 1.9rem;
-    }
-    .acervo-shortcut {
-        padding: 46px 20px;
-    }
-    .timeline-banner,
-    .testimonial-section {
-        padding: 20px;
-    }
-    .timeline-scroll {
-        justify-content: flex-start;
-        padding-bottom: 8px;
-    }
-    .testimonial-section,
-    .testimonial-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .large-quote {
-        display: none;
-    }
-    .museum-form .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    .featured-body,
-    .box-body {
-        padding: 20px;
-    }
-    .footer-top h2 {
-        font-size: 2.15rem;
-    }
-    .footer-grid {
-        gap: 24px;
-    }
+.hero-media figcaption {
+  padding: var(--space-2) var(--space-3);
+  color: rgb(255 255 255 / 0.78);
+  font-size: 0.875rem;
 }
 
-@media (max-width: 380px) {
-    .hero-content h1,
-    .hero-content-expo h1 {
-        font-size: 2rem;
-    }
-    .hero-content-home h1 {
-        font-size: 2.25rem;
-    }
-    .decorator {
-        width: 200px;
-    }
+.eyebrow {
+  margin-bottom: var(--space-2);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section {
+  padding-block: var(--space-6);
+}
+
+.section-muted {
+  background: rgb(255 255 255 / 0.48);
+  border-block: 1px solid rgb(216 203 184 / 0.7);
+}
+
+.section-heading {
+  max-width: 42rem;
+  margin-bottom: var(--space-4);
+}
+
+.info-panel,
+.memory-card,
+.collection-item,
+.museum-form {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: 0 0.5rem 1.25rem rgb(31 41 51 / 0.07);
+}
+
+.info-panel {
+  padding: var(--space-4);
+}
+
+.check-list,
+.link-list,
+.steps {
+  padding-left: 1.2rem;
+}
+
+.check-list li + li,
+.link-list li + li,
+.steps li + li {
+  margin-top: var(--space-2);
+}
+
+.check-list li::marker {
+  color: var(--color-green);
+}
+
+.card-grid,
+.collection-grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.memory-card {
+  padding: var(--space-4);
+}
+
+.memory-card h3::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 0.18rem;
+  margin-top: var(--space-2);
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+.memory-card a {
+  font-weight: 750;
+}
+
+.collection-item {
+  overflow: hidden;
+}
+
+.collection-item img {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  background: var(--color-line);
+}
+
+.collection-item h3,
+.collection-item p {
+  margin-inline: var(--space-3);
+}
+
+.collection-item h3 {
+  margin-top: var(--space-3);
+}
+
+.credit {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.museum-table {
+  --bs-table-bg: var(--color-surface);
+  --bs-table-striped-bg: rgb(143 47 63 / 0.055);
+  border: 1px solid var(--color-line);
+}
+
+.museum-table caption {
+  color: var(--color-muted);
+}
+
+.museum-form {
+  padding: var(--space-4);
+}
+
+.museum-form fieldset {
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  border: 0;
+}
+
+.museum-form legend {
+  margin-bottom: var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: var(--space-3);
+}
+
+.form-row {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.form-field label,
+.choice-group,
+.acceptance {
+  font-weight: 650;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 0.9rem;
+  background: #fff;
+  color: var(--color-ink);
+  font: inherit;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field input:valid,
+.form-field textarea:valid {
+  border-color: rgb(47 107 87 / 0.75);
+}
+
+.form-field input:invalid:not(:placeholder-shown),
+.form-field textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--color-primary);
+  background: rgb(143 47 63 / 0.06);
+}
+
+.choice-group {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.choice-group label,
+.acceptance {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.choice-group input,
+.acceptance input {
+  margin-top: 0.35rem;
+  accent-color: var(--color-primary);
+}
+
+.choice-group label:has(input:checked),
+.acceptance:has(input:checked) {
+  color: var(--color-green);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-bg: var(--color-primary-dark);
+  --bs-btn-hover-border-color: var(--color-primary-dark);
+  --bs-btn-active-bg: var(--color-primary-dark);
+  --bs-btn-active-border-color: var(--color-primary-dark);
+}
+
+.btn:hover {
+  transform: translateY(-0.08rem);
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-line);
+  background: var(--color-ink);
+  color: #fff;
+  padding-block: var(--space-5);
+}
+
+.site-footer a {
+  color: #f6c66d;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (min-width: 42rem) {
+  .card-grid,
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .hero-grid {
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+  }
+
+  .two-columns,
+  .content-with-aside,
+  .form-layout {
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    align-items: start;
+  }
+
+  .card-grid,
+  .collection-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .info-panel {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+@media (min-width: 78rem) {
+  .hero,
+  .page-hero,
+  .section {
+    padding-block: 4.5rem;
+  }
 }
